@@ -1,0 +1,14 @@
+
+public class ArtikelTest {
+
+	public static void main(String[] args) {
+		Forlag forlaget = new Forlag("Univeristy Press", "Denmark");
+		Tidsskrift skrift1 = new Tidsskrift("Journal of Logic");
+		skrift1.setForlag(forlaget);
+		Tidsskrift skrift2 = new Tidsskrift("Brain");
+		skrift2.setForlag(forlaget);
+		System.out.print(skrift1.toString());
+
+	}
+
+}
