@@ -52,7 +52,7 @@ public class GameOfLifeMain {
 		
 		int size = lines.size();
 		if(size == 0) {
-			System.out.println("File is empty. Try again");
+			System.out.println("File is empty, try again");
 			return readFile(getFile());
 		}
 		int[][] grid = new int[size][size];
@@ -64,7 +64,7 @@ public class GameOfLifeMain {
 				}
 			}
 		} catch (NoSuchElementException e) {
-			 System.out.println("Matrix is wrong dimensions. Try again.");
+			 System.out.println("Matrix is wrong dimensions, try again");
 			 return readFile(getFile());
 		}
 		return grid;
@@ -80,9 +80,9 @@ public class GameOfLifeMain {
         try {
             System.out.print("Do you want to use a file? (Y or N): ");
             s = input.next();
-            if (s.equals("Y")) {
+            if (s.toUpperCase().equals("Y")) {
             	return true;
-            } else if (s.equals("N")) {
+            } else if (s.toUpperCase().equals("N")) {
             	return false;
             } else {
             	System.out.println("Enter Y or N");
@@ -106,7 +106,7 @@ public class GameOfLifeMain {
             fp = input.nextLine();
             File f = new File(fp);
             
-            if(f.canRead()) {
+            if(!f.isDirectory() && f.canRead()) {
             	return f;
             } else {
             	System.out.println("Unable to locate file, try again");
@@ -130,11 +130,11 @@ public class GameOfLifeMain {
             if (num > 0) {
                 return num;
             } else {
-                System.out.println("Input an interger greater than 0");
+                System.out.println("Input an integer greater than 0");
                 return getSize();
             }
         } catch (InputMismatchException e) {
-        	System.out.println("Input an interger greater than 0");
+        	System.out.println("Input an integer greater than 0");
             return getSize();
         }
     }

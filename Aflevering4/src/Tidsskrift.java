@@ -1,4 +1,6 @@
-
+/*
+ * Object representing a tidsskrift
+ */
 public class Tidsskrift {
 	private String titel;
 	private Forlag forlag;
