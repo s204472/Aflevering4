@@ -7,7 +7,7 @@ public class GameOfLifeMain {
 	
 	public static void main(String[] args) throws FileNotFoundException{
 	
-		StdDraw.setCanvasSize(800, 800);
+		
 			
 		GameOfLife gameOfLife;
 		
@@ -15,6 +15,7 @@ public class GameOfLifeMain {
 		 * Choose if program should run of a file, or random values with given size.
 		 * */
 		boolean inputFilepath = getInput();
+		StdDraw.setCanvasSize(800, 800);
 		if (inputFilepath) {
 			File f = getFile();
 			int[][] grid = readFile(f);
@@ -60,11 +61,16 @@ public class GameOfLifeMain {
 			for (int i = 0; i < size; i++) {
 				Scanner line = new Scanner(lines.get(i));
 				for (int j = 0; j < size; j++) {
-					grid[i][j] = line.nextInt();
+					int val = line.nextInt();
+					if(val != 0 && val != 1) {
+						System.out.println("Matrix isn't a square of 1's and 0's, try again");
+						return readFile(getFile());
+					}
+					grid[i][j] = val;
 				}
 			}
 		} catch (NoSuchElementException e) {
-			 System.out.println("Matrix is wrong dimensions, try again");
+			 System.out.println("Matrix isn't a square of 1's and 0's, try again");
 			 return readFile(getFile());
 		}
 		return grid;
@@ -85,11 +91,11 @@ public class GameOfLifeMain {
             } else if (s.toUpperCase().equals("N")) {
             	return false;
             } else {
-            	System.out.println("Enter Y or N");
+            	System.out.println("Please enter Y or N");
                 return getInput();
             }
         } catch (InputMismatchException e) {
-            System.out.println("Enter Y or N");
+            System.out.println("Please enter Y or N");
             return getInput();
         }
     }
