@@ -19,6 +19,10 @@ public class Tidsskrift {
 		return titel;
 	}
 	public String toString() {
-		return titel + ". " + forlag.toString();
+		String s = "";
+		s += titel != ""  ?  titel : "Titel ikke angivet";
+		s += issn != null ?  ", " + issn : ", Issn ikke angivet";
+		s += forlag != null ? ", " + forlag : ", Forlag ikke angivet.";
+		return s;
 	}
 }
